@@ -54,7 +54,7 @@ public class Splitter {
     public static int splitFileToNumberOfFiles(String inputFile, String outputDir, Integer numberOfFiles, boolean isHeader) {
         int numOfLines = 0;
         int capacity = 0;
-        String oneLine;
+        if(isHeader) numOfLines = -1;
         try (BufferedReader br = new BufferedReader(new FileReader(Paths.get(inputFile).toFile()))) {
             while (br.readLine() != null) {
                 numOfLines++;
