@@ -7,8 +7,13 @@ public class MainApp {
         //path to output directory for files
         String outputDir = "C:\\workspace\\poligon\\fileSplitter\\out";
         //size of split
-        Integer holdingCapacity = 45;
+        Integer fileCapacity = 45;
+        Integer numberOfFiles = 45;
 
-        Splitter.splitFile(inputFile,outputDir,holdingCapacity);
+        // fixed fileCapacity
+        //Splitter.splitFile(inputFile,outputDir,fileCapacity);
+        //or fixed number of files
+        Splitter.splitFileToNumberOfFiles(inputFile,outputDir,numberOfFiles);
+
     }
 }

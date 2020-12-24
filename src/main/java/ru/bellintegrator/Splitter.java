@@ -46,4 +46,26 @@ public class Splitter {
 
         return filesCount;
     }
+
+    public static int splitFileToNumberOfFiles(String inputFile, String outputDir, Integer numberOfFiles) {
+        return splitFileToNumberOfFiles(inputFile, outputDir, numberOfFiles, true);
+    }
+
+    public static int splitFileToNumberOfFiles(String inputFile, String outputDir, Integer numberOfFiles, boolean isHeader) {
+        int numOfLines = 0;
+        int capacity = 0;
+        String oneLine;
+        try (BufferedReader br = new BufferedReader(new FileReader(Paths.get(inputFile).toFile()))) {
+            while (br.readLine() != null) {
+                numOfLines++;
+            }
+            if (numOfLines % numberOfFiles != 0) capacity = (numOfLines/numberOfFiles) + 1;
+            else capacity = numOfLines/numberOfFiles;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return splitFile(inputFile, outputDir, capacity, isHeader);
+    }
 }
